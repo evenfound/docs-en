@@ -1,1 +1,2 @@
 - [EVEN network basic protocol](basic-protocol.md)
+- [EVEN network smart contract](smart-contract-specification.md)
