@@ -1,27 +1,27 @@
-## EVEN Network Smart Contracts Specification
+# EVEN Network Smart Contracts Specification
 
-### Overview
+## Overview
 
 This is the specification document for the *smart contracts* (SC) required for the *Even Network*. It describes all types, variables, functions, their signatures, and their semantics.
 
-### Definition
+## Definition
 
 A *Even Smart Contract* (ESC) is a computer program library, whose functions can be executed inside a *Even Network Node* (ENN) process under control of the *Even Virtual Machine* (EVM). A contract consists of code (its functions) and data (its state) that resides at a specific address on the *Even DAG*.
 
-### Principles and Goals
+## Principles and Goals
 
 - **Security**: It should be possible and natural to build secure SM
 - **Simplicity**: The language and the compiler implementation should strive to be simple
 - **Auditability**: The contract code should be maximally human-readable. Furthermore, it should be maximally difficult to write misleading code. Simplicity for the reader is more important than simplicity for the writer, and simplicity for readers with low experience is particularly important
 
-### Memory Model
+## Memory Model
 
 A contract variable can be *state* or *temporary* variable.
 
 - A contract’s *state variables* are the ones which define the contract’s state, are  permanently stored in contract storage and only changed by sendTransaction calls
 - *Temporary variables* exist only inside the calling function (they cannot be declared outside of one). They get wiped after the function exits and they are generally cheaper to use than state variables
 
-### Variables
+## Variables
 
 Contract has access to a set of predefined variables:
 
@@ -30,7 +30,7 @@ Contract has access to a set of predefined variables:
 - **sender** — account that called the contract
 - **value** — amount of tokens the user sent with the call
 
-### Objects
+## Objects
 
 Contract can create objects of following types:
 
@@ -38,7 +38,7 @@ Contract can create objects of following types:
 - **Account** {privateKey, publicKey}
 - **Transaction** {sender, receiver, value}
 
-### Functions
+## Functions
 
 `even.hash(message)`
 Hashes the given message and returns the hash.
