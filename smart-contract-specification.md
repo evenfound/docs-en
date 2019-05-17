@@ -55,4 +55,5 @@ A contract can also have a default function, which is executed on a call to the 
 | **wallet** | `nextaccount` | (handle int) | account-address string | Generates next deterministic account. Returns address of new account on success or empty string otherwise. |
 | **wallet** | `account` | (handle int, account-address string) | handle int | Returns handle to an account. The handle is positive on success or negative otherwise (for instance, non-existent address). |
 | **account** | `newtransaction` | (handle, tx-type int) | handle int | Returns handle to a new transaction. This transaction should be properly initialized and published before any use. |
-| **transaction** | `save` | (handle int) | tx-address string | Publishes new transaction. Returns address of new transaction on success or empty string otherwise. |
+| **account** | `transaction` | (handle int, tx-address string) | handle int | Returns handle to a transaction with known address. The handle is positive on success or negative otherwise (for instance, non-existent transaction). |
+| **transaction** | `save` | (handle int) | tx-address string | Publishes new transaction. Returns address of new transaction on success or empty string otherwise (for instance, the transaction already exists). |
