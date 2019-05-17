@@ -34,62 +34,25 @@ Contract has access to a set of predefined variables:
 
 Contract can create objects of following types:
 
-- **Wallet** {seed}
-- **Account** {privateKey, publicKey}
-- **Transaction** {sender, receiver, value}
+- **wallet**
+- **account**
+- **transaction**
 
 ### Functions
 
-`even.hash(message)`
-Hashes the given message and returns the hash.
-
-`even.sign(message, privateKey)`
-Signs arbitrary data and returns the signature.
-
-`even.verify(message,signature,publicKey)`
-Signs arbitrary data.
-
-`even.createStorage(key)`
-Creates a storage (persistent) variable.
-
-`even.wallet(name, password)`
-Creates and returns a wallet object (not wallet itself).
-
-`wallet.generate()`
-Creates a brand-new, unique encrypted wallet. Returns new seed mnemonic phrase.
-
-`wallet.create(seed)`
-(Re)creates encrypted wallet with known seed.
-
-`wallet.unlock()`
-Unlocks the wallet temporarily.
-
-`wallet.account()`
-Creates and returns an account object.
-
-`account.next()`
-Generates next deterministic account. Returns the new account’s address.
-
-`account.balance()`
-Returns current balance of the account.
-
-`account.address()`
-Returns the account’s address.
-
-`account.privateKey()`
-Returns the account’s private key.
-
-`account.publicKey()`
-Returns the account’s public key.
-
-`account.createTransaction(address)`
-Creates a transaction object with the sender address.
-
-`tx.sign(privateKey)`
-Signs a transaction with a given private key.
-
-`tx.send()`
-Sends a transaction.
+A contract is actually just a library of functions. Only one function can be called in one invokation.
 
 `default()`
 A contract can also have a default function, which is executed on a call to the contract if no other functions match the given function identifier (or if none was supplied at all). The default function does not accept arguments and return values.
+
+### API
+
+| Namespace | Function | Parameters | Returns | Description |
+|-----------|----------|------------|---------|-------------|
+| **even**  | `wallet` | (name, password string) | handle int | Returns handle to a wallet. The wallet may be in any state. New wallet should be generated before any use. The handle is positive on success or negative otherwise. |
+| **wallet** | `generate` | (handle int) | seed-phrase string | Generates new HD wallet and returns the seed. The seed string is empty on failure. |
+| **wallet** | `create` | (handle int, seed string) | seed-phrase string | Recreates HD wallet with known seed and returns the seed. The resulting string is empty on failure. |
+| **wallet** | `nextaccount` | (handle int) | account-address string | Generates next deterministic account. Returns address of new account on success or empty string otherwise. |
+| **wallet** | `account` | (handle int, account-address string) | handle int | Returns handle to an account. The handle is positive on success or negative otherwise (for instance, non-existent address). |
+| **account** | `newtransaction` | (handle, tx-type int) | handle int | Returns handle to a new transaction. This transaction should be properly initialized and published before any use. |
+| **transaction** | `save` | (handle int) | tx-address string | Publishes new transaction. Returns address of new transaction on success or empty string otherwise. |
