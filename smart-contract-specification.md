@@ -49,11 +49,11 @@ A contract can also have a default function, which is executed on a call to the 
 
 | Namespace | Function | Parameters | Returns | Description |
 |-----------|----------|------------|---------|-------------|
-| **even**  | `wallet` | (name, password string) | handle int | Returns handle to a wallet. The wallet may be in any state. New wallet should be generated before any use. The handle is positive on success or negative otherwise. |
-| **wallet** | `generate` | (handle int) | seed-phrase string | Generates new HD wallet and returns the seed. The seed string is empty on failure. |
-| **wallet** | `create` | (handle int, seed string) | seed-phrase string | Recreates HD wallet with known seed and returns the seed. The resulting string is empty on failure. |
-| **wallet** | `nextaccount` | (handle int) | account-address string | Generates next deterministic account. Returns address of new account on success or empty string otherwise. |
-| **wallet** | `account` | (handle int, account-address string) | handle int | Returns handle to an account. The handle is positive on success or negative otherwise (for instance, non-existent address). |
-| **account** | `newtransaction` | (handle, tx-type int) | handle int | Returns handle to a new transaction. This transaction should be properly initialized and published before any use. |
-| **account** | `transaction` | (handle int, tx-address string) | handle int | Returns handle to a transaction with known address. The handle is positive on success or negative otherwise (for instance, non-existent transaction). |
-| **transaction** | `save` | (handle int) | tx-address string | Publishes new transaction. Returns address of new transaction on success or empty string otherwise (for instance, the transaction already exists). |
+| **even**  | `wallet` | (name, password string) | name | Returns name of a wallet. The wallet may be in any state. New wallet should be generated before any use. The name is empty on failure. |
+| **wallet** | `generate` | (name string) | seed-phrase string | Generates new HD wallet and returns the seed. The seed string is empty on failure. |
+| **wallet** | `create` | (name, seed string) | seed-phrase string | Recreates HD wallet with known seed and returns the seed. The resulting string is empty on failure. |
+| **wallet** | `nextaccount` | (name string) | account string | Generates next deterministic account. Returns address of new account on success or empty string otherwise. |
+| **wallet** | `account` | (name, account string) | account string | Returns address of an account. The address is empty on failure (for instance, non-existent account). |
+| **account** | `newtransaction` | (account string, tx-type int) | tx string | Returns address of a new transaction. This transaction should be properly initialized and published before any use. |
+| **account** | `transaction` | (account, tx string) | tx string | Returns address of a transaction with known address or empty string on failure (for instance, non-existent transaction). |
+| **transaction** | `save` | (tx string) | hash string | Publishes new transaction. Returns IPFS-hash of saved transaction on success or empty string otherwise (for instance, the transaction is already saved). |
