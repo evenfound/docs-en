@@ -13,7 +13,6 @@ Tengo supports line comments (`//...`) and block comments (`/* ... */`).
 
 a := 5 // line comments
 ```
-> [Run in Playground](https://tengolang.com/?s=02e384399a0397b0a752f08604ccb244d1a6cb37)
 
 ## Types and Assignment
 
@@ -35,7 +34,6 @@ k := func(l, m) {	// function
     return l + m
 }
 ```
-> [Run in Playground](https://tengolang.com/?s=f8626a711769502ce20e4560ace65c0e9c1279f4)
 
 After the variable is initialized, it can be re-assigned different value using `=` operator. 
 
@@ -48,8 +46,6 @@ f := func() {
 }
 a == "foo" 		// still "foo"
 ```
-> [Run in Playground](https://tengolang.com/?s=1d39bc2af5c51417df82b32db47a0e6a156d48ec)
-
 
 Type is not directly specified, but, you can use type-coercion functions to convert between types.
 
@@ -60,7 +56,6 @@ f3 := float(-51)    // -51.0
 b4 := bool(1)       // true
 c5 := char("X")     // 'X'
 ```
-> [Run in Playground](https://tengolang.com/?s=8d57905b82959eb244e9bbd2111e12ee04a33045)
 
 _See [Runtime Types](https://github.com/d5/tengo/blob/master/docs/runtime-types.md) and [Operators](https://github.com/d5/tengo/blob/master/docs/operators.md) for more details on the value types._
 
@@ -86,7 +81,6 @@ m["b"][5]                       // == undefined
 m["b"][5].d                     // == undefined
 //m.b[5] = 0			// but this is an error: index out of bounds
 ```
-> [Run in Playground](https://tengolang.com/?s=d510c75ed8f06ef1e22c1aaf8a7d4565c793514c)
 
 For sequence types (string, bytes, array), you can use slice operator (`[:]`) too.
 
@@ -97,7 +91,6 @@ c := [1, 2, 3, 4, 5][:3]	// == [1, 2, 3]
 d := "hello world"[2:10]	// == "llo worl"
 c := [1, 2, 3, 4, 5][-1:10]    // == [1, 2, 3, 4, 5]
 ```
-> [Run in Playground](https://tengolang.com/?s=214ab490bb24549578770984985f6b161aed915d)
 
 ## Conditional Expression
 
@@ -112,8 +105,6 @@ min := func(a, b) {
 b := min(5, 10)       // b == 5
 ```
 
-> [Run in Playground](https://tengolang.com/?s=24724cc03e8ef2e56b7851017f8c2a577897961e)
-
 ## Functions
 
 In Tengo, functions are first-class citizen, and, it also supports closures, functions that captures variables in outer scopes. In the following example, the function returned from `adder` is capturing `base` variable.
@@ -125,7 +116,6 @@ adder := func(base) {
 add5 := adder(5)
 nine := add5(4)		// == 9
 ```
-> [Run in Playground](https://tengolang.com/?s=fba79990473d5b38cc944dfa225d38580ddaf422)
 
 ## Flow Control
 
@@ -215,7 +205,6 @@ if is_error(err1) {     // 'is_error' builtin function
     err_val := err1.value   // get underlying value 
 }  
 ``` 
-> [Run in Playground](https://tengolang.com/?s=5eaba4289c9d284d97704dd09cb15f4f03ad05c1)
 
 ## Modules
 
@@ -248,10 +237,3 @@ In Tengo, modules are very similar to functions.
     - `export`-ed values are always immutable.
     - If the module does not have any `export` statement, `import` expression simply returns `undefined`. _(Just like the function that has no `return`.)_  
     - Note that `export` statement is completely ignored and not evaluated if the code is executed as a regular script.  
-
-Also, you can use `import` to load the [Standard Library](https://github.com/d5/tengo/blob/master/docs/stdlib.md).
-
-```golang
-math := import("math")
-a := math.abs(-19.84) // == 19.84
-```
