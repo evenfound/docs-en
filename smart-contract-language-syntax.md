@@ -57,8 +57,6 @@ b4 := bool(1)       // true
 c5 := char("X")     // 'X'
 ```
 
-_See [Runtime Types](https://github.com/d5/tengo/blob/master/docs/runtime-types.md) and [Operators](https://github.com/d5/tengo/blob/master/docs/operators.md) for more details on the value types._
-
 ## Indexing
 
 You can use the dot selector (`.`) and indexer (`[]`) operator to read or write elements of arrays, strings, or maps.
